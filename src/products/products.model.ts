@@ -3,7 +3,7 @@ import { Column, Model, Table } from 'sequelize-typescript';
 @Table
 export class Products extends Model {
   @Column
-  product_manufacture: string;
+  product_manufacturer: string;
 
   @Column({ defaultValue: 0 })
   price: string;
@@ -24,7 +24,7 @@ export class Products extends Model {
   in_stock: string;
 
   @Column({ defaultValue: false })
-  bestsellers: boolean;
+  bestseller: boolean;
 
   @Column({ defaultValue: false })
   new: boolean;
