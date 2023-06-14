@@ -1,15 +1,12 @@
 import { Column, Model, Table } from 'sequelize-typescript';
 
 @Table
-export class BoilerParts extends Model {
+export class Products extends Model {
   @Column
-  boiler_manufacture: string;
+  product_manufacture: string;
 
   @Column({ defaultValue: 0 })
   price: string;
-
-  @Column
-  parts_manufacture: string;
 
   @Column
   vendor_code: string;
@@ -34,7 +31,4 @@ export class BoilerParts extends Model {
 
   @Column
   popularity: string;
-
-  @Column
-  compatibility: string;
 }
