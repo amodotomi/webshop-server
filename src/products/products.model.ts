@@ -6,7 +6,7 @@ export class Products extends Model {
   product_manufacturer: string;
 
   @Column({ defaultValue: 0 })
-  price: string;
+  price: number;
 
   @Column
   vendor_code: string;
@@ -21,7 +21,7 @@ export class Products extends Model {
   images: string;
 
   @Column({ defaultValue: 0 })
-  in_stock: string;
+  in_stock: number;
 
   @Column({ defaultValue: false })
   bestseller: boolean;
