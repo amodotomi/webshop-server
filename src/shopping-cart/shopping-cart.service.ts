@@ -30,7 +30,7 @@ export class ShoppingCartService {
     cart.product_manufacturer = product.product_manufacturer;
     cart.price = product.price;
     cart.in_stock = product.in_stock;
-    cart.image = JSON.stringify(product.images)[0];
+    cart.image = JSON.parse(product.images)[0];
     cart.name = product.name;
     cart.total_price = product.price;
 
@@ -39,7 +39,7 @@ export class ShoppingCartService {
 
   async updateCount(
     count: number,
-    productId: number,
+    productId: number | string,
   ): Promise<{ count: number }> {
     await this.shoppingCartModel.update({ count }, { where: { productId } });
 
@@ -51,7 +51,7 @@ export class ShoppingCartService {
 
   async updateTotalPrice(
     total_price: number,
-    productId: number,
+    productId: number | string,
   ): Promise<{ total_price: number }> {
     await this.shoppingCartModel.update(
       { total_price },
@@ -64,7 +64,7 @@ export class ShoppingCartService {
     return { total_price: product.total_price };
   }
 
-  async remove(productId: number): Promise<void> {
+  async remove(productId: number | string): Promise<void> {
     const product = await this.shoppingCartModel.findOne({
       where: { productId },
     });
@@ -72,7 +72,7 @@ export class ShoppingCartService {
     await product.destroy();
   }
 
-  async removeAll(userId: number): Promise<void> {
+  async removeAll(userId: number | string): Promise<void> {
     await this.shoppingCartModel.destroy({ where: { userId } });
   }
 }
